@@ -4,7 +4,7 @@ const Tasks = require('./model')
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-    Tasks.find()
+    Tasks.findTask()
         .then(tasks => {
 
             tasks.forEach(task => {
@@ -38,7 +38,7 @@ router.get('/:task_id', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-    Tasks.create(req.body)
+    Tasks.createTask(req.body)
         .then(task => {
             res.json(task)
         })

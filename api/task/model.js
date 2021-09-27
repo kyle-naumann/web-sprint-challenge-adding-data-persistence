@@ -1,6 +1,6 @@
 const db = require('../../data/dbConfig')
 
-const find = () => {
+const findTask = () => {
     return db("tasks as t")
         .leftJoin("projects as p", "t.project_id", "p.project_id")
         .select("t.task_id", "t.task_description", "t.task_notes","t.task_completed", "p.project_name","p.project_description")
@@ -19,7 +19,7 @@ const findById = async task_id => {
     return task
 }
 
-const create = async (newTask) => {
+const createTask = async (newTask) => {
 
     if(newTask.task_completed === true || newTask.task_completed === 1) {
         newTask.task_completed = 1
@@ -33,7 +33,7 @@ const create = async (newTask) => {
 }
 
 module.exports = {
-    find,
+    findTask,
     findById,
-    create
-} 
+    createTask
+}

@@ -1,6 +1,6 @@
 const db = require('../../data/dbConfig')
 
-const find = () => {
+const findResource = () => {
     return db('resources')
 }
 
@@ -10,14 +10,14 @@ const findById = async (resource_id) => {
     return resource
 }
 
-const create = async (newResource) => {
+const createResource = async (newResource) => {
     const [resource_id] = await db('resources').insert(newResource)
 
     return findById(resource_id)
 }
 
 module.exports = {
-    find,
+    findResource,
     findById,
-    create
+    createResource
 }

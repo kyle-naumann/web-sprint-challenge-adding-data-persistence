@@ -2,7 +2,6 @@ exports.seed = function(knex) {
 
     return knex('resources').truncate()
       .then(function () {
-        // Inserts seed entries
         return knex('resources').insert([
           {resource_name: "NASA", resource_description: ""},
           {resource_name: "Elon Musk", resource_description: "He's already working on a spaceship to go there"},

@@ -4,7 +4,7 @@ const Resources = require('./model')
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-    Resources.find()
+    Resources.findResource()
         .then(resources => {
             res.json(resources)
         })
@@ -13,7 +13,7 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
 
-    Resources.create(req.body)
+    Resources.createResource(req.body)
         .then(resource => {
             res.json(resource)
         })

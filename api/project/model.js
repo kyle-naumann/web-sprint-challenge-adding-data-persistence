@@ -1,6 +1,6 @@
 const db = require('../../data/dbConfig')
 
-const find = () => {
+const findProject = () => {
     return db("projects")
 }
 
@@ -17,21 +17,21 @@ const findById = async project_id => {
     return project
 }
 
-const create = async (newProj) => {
+const createProject = async (newProject) => {
 
-    if(newProj.project_completed === true || newProj.project_completed === 1) {
-        newProj.project_completed = 1
+    if(newProject.project_completed === true || newProject.project_completed === 1) {
+        newProject.project_completed = 1
     } else {
-        newProj.project_completed = 0
+        newProject.project_completed = 0
     }
 
-    const [project_id] = await db("projects").insert(newProj)
+    const [project_id] = await db("projects").insert(newProject)
 
     return findById(project_id)
 }
 
 module.exports = {
-    find,
+    findProject,
     findById,
-    create
+    createProject
 }
